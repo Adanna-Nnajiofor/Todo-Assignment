@@ -56,11 +56,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
     let selector = "edit";
     if (targetEle.className === selector) {
       const taskText = targetEle.parentNode.firstChild.textContent;
-      const newTaskText = prompt("Edit task:", taskText);
-      if (newTaskText !== null && newTaskText !== "") {
-        targetEle.parentNode.firstChild.textContent = newTaskText;
+      taskName.value = taskText;
+      if (taskName.value !== null && taskName.value !== "") {
+        targetEle.parentNode.firstChild.textContent = taskName.value;
         const index = taskArray.indexOf(taskText);
-        taskArray[index] = newTaskText;
+        taskArray[index] = taskName.value;
+        console.log(targetEle.parentNode)
+        listContainer.removeChild(targetEle.parentNode)
+        taskArray.splice(index,1)
+  
       }
     }
   };
